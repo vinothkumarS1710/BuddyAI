@@ -1,6 +1,6 @@
 # BuddyAI 🤖
 
-BuddyAI is a modern AI-powered chatbot application built using the MERN stack. It provides intelligent real-time conversations using Gemini/OpenAI APIs with a clean and responsive user interface.
+BuddyAI is a modern AI-powered chatbot application built using the MERN stack. It provides intelligent real-time conversations using Gemini APIs with a clean and responsive user interface.
 
 ## 🚀 Features
 
