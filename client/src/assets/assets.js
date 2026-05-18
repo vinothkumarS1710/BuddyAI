@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import logo_full from "./logo_full.svg";
 import logo_full_dark from "./logo_full_dark.svg";
 import search_icon from "./search_icon.svg";
-import user_icon from "./user_icon.svg";
+import user_icon from "./user_icon.png";
 import theme_icon from "./theme_icon.svg";
 import send_icon from "./send_icon.svg";
 import stop_icon from "./stop_icon.svg";
@@ -47,7 +47,7 @@ export const assets = {
 
 export const dummyUserData = {
     "_id": "689c6deed410acddc0d95a0e",
-    "name": "GreatStack",
+    "name": "Vinoth Kumar",
     "email": "admin@example.com",
     "password": "$2b$10$VESVdPDjL5LF.KCU6jKyqeXNSLASAAfpR2kkIJExtMO.PJvZJAudy",
     "credits": 200,
@@ -83,7 +83,7 @@ export const dummyChats = [
     {
         "_id": "689de4bbaa932dc3a8ef6cd7",
         "userId": "689c6deed410acddc0d95a0e",
-        "userName": "GreatStack",
+        "userName": "Vinoth Kumar",
         "name": "New Chat",
         "messages": [
             {
@@ -267,13 +267,13 @@ export const dummyChats = [
         ],
         "createdAt": "2025-08-13T17:29:52.421Z",
         "updatedAt": "2025-08-14T09:39:19.046Z",
-        "userName": "GreatStack"
+        "userName": "Vinoth Kumar"
     },
     {
         "_id": Date.now(),
         "userId": "gs123456789",
         "name": "New Chat",
-        "userName": "GreatStack",
+        "userName": "Vinoth Kumar",
         "messages": [],
         "createdAt": "2025-08-13T17:29:52.421Z",
         "updatedAt": "2025-08-14T09:39:19.046Z",
@@ -283,46 +283,46 @@ export const dummyChats = [
 export const dummyPublishedImages = [
     {
         "imageUrl": ai_image11,
-        "userName": "GreatStack"
+        "userName": "Vinoth Kumar"
     },
     {
         "imageUrl": ai_image10,
-        "userName": "GreatStack"
+        "userName": "Vinoth Kumar"
     },
     {
         "imageUrl": ai_image9,
-        "userName": "GreatStack"
+        "userName": "Vinoth Kumar"
     },
     {
         "imageUrl": ai_image8,
-        "userName": "GreatStack"
+        "userName": "Vinoth Kumar"
     },
     {
         "imageUrl": ai_image7,
-        "userName": "GreatStack"
+        "userName": "Vinoth Kumar"
     },
     {
         "imageUrl": ai_image6,
-        "userName": "GreatStack"
+        "userName": "Vinoth Kumar"
     },
     {
         "imageUrl": ai_image5,
-        "userName": "GreatStack"
+        "userName": "Vinoth Kumar"
     },
     {
         "imageUrl": ai_image4,
-        "userName": "GreatStack"
+        "userName": "Vinoth Kumar"
     },
     {
         "imageUrl": ai_image3,
-        "userName": "GreatStack"
+        "userName": "Vinoth Kumar"
     },
     {
         "imageUrl": ai_image2,
-        "userName": "GreatStack"
+        "userName": "Vinoth Kumar"
     },
     {
         "imageUrl": ai_image1,
-        "userName": "GreatStack"
+        "userName": "Vinoth Kumar"
     }
 ]
