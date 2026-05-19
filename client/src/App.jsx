@@ -2,6 +2,7 @@ import { useState } from 'react'
 import SideBar from './components/SideBar'
 import AllRoutes from "./routes/AllRoutes"
 import { assets } from './assets/assets'
+import './assets/prism.css'
 
 const App = () => {
   
