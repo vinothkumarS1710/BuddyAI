@@ -15,17 +15,20 @@ BuddyAI is a modern AI-powered chatbot application built using the MERN stack. I
 ## 🛠️ Tech Stack
 
 ### Frontend
+
 - React.js
 - Tailwind CSS
 - Axios
 
 ### Backend
+
 - Node.js
 - Express.js
 - MongoDB
 - JWT Authentication
 
 ### AI Integration
+
 - Gemini API
 
 ---
@@ -45,6 +48,7 @@ git clone https://github.com/vinothkumarS1710/BuddyAI.git
 ```bash
 cd client
 npm install
+npm i moment
 npm run dev
 ```
 

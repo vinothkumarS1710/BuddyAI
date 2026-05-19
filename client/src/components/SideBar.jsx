@@ -9,7 +9,9 @@ const SideBar = ({ isMenuOpen, setIsMenuOpen }) => {
   const [search, setSearch] = useState("");
 
   return (
-    <div className={`flex flex-col h-screen min-w-72 p-5 dark:bg-gradient-to-b from-[#242124]/30 to-[#000000]/30 border border-t-0 border-[#62cff4]/30 backdrop-blur-3xl transition-all duration-500 max-md:absolute left-0 z-1 ${!isMenuOpen && 'max-md:-translate-x-full'}`}>
+    <div
+      className={`flex flex-col h-screen min-w-72 p-5 dark:bg-gradient-to-b from-[#242124]/30 to-[#000000]/30 border border-t-0 border-[#62cff4]/30 backdrop-blur-3xl transition-all duration-500 max-md:absolute left-0 z-1 ${!isMenuOpen && "max-md:-translate-x-full"}`}
+    >
       <img
         src={theme === "dark" ? assets.logo_full : assets.logo_full_dark}
         alt=""
@@ -43,7 +45,11 @@ const SideBar = ({ isMenuOpen, setIsMenuOpen }) => {
           )
           .map((chat) => (
             <div
-              onClick={() => {navigate('/'); setSelectedChats(chat);setIsMenuOpen(false)}}
+              onClick={() => {
+                navigate("/");
+                setSelectedChats(chat);
+                setIsMenuOpen(false);
+              }}
               key={chat._id}
               className="p-2 px-4 dark:bg-[#57317C]/10 border border-gray-300 dark:border-[#80609F]/15 rounded-md cursor-pointer flex justify-between group"
             >
@@ -67,7 +73,8 @@ const SideBar = ({ isMenuOpen, setIsMenuOpen }) => {
 
       <div
         onClick={() => {
-          navigate("/community");setIsMenuOpen(false)
+          navigate("/community");
+          setIsMenuOpen(false);
         }}
         className="flex items-center gap-2 p-3 mt-4 border border-gray-300 dark:border-white/15 rounded-md cursor-pointer hover:scale-103 transition-all"
       >
@@ -79,7 +86,8 @@ const SideBar = ({ isMenuOpen, setIsMenuOpen }) => {
 
       <div
         onClick={() => {
-          navigate("/credits");setIsMenuOpen(false)
+          navigate("/credits");
+          setIsMenuOpen(false);
         }}
         className="flex items-center gap-2 p-3 mt-4 border border-gray-300 dark:border-white/15 rounded-md cursor-pointer hover:scale-103 transition-all"
       >
@@ -109,8 +117,8 @@ const SideBar = ({ isMenuOpen, setIsMenuOpen }) => {
         </label>
       </div>
 
-      <div className="flex items-center gap-3 p-3 mt-4 border border-gray-300 dark:border-white/15 rounded-md cursor-pointer group">
-        <img src={assets.user_icon} className="w-5 rounded-full" />
+      <div className="flex items-center gap-2 p-3 mt-4 border border-gray-300 dark:border-white/15 rounded-md cursor-pointer group">
+        <img src={assets.user_icon} className="w-5 rounded-full dark:invert" />
         <p className="flex-1 text-sm dark:text-primary truncate">
           {user ? user.name : "Login your account"}
         </p>

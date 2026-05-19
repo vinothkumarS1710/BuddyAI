@@ -2,7 +2,8 @@ import logo from "./logo.svg";
 import logo_full from "./logo_full.svg";
 import logo_full_dark from "./logo_full_dark.svg";
 import search_icon from "./search_icon.svg";
-import user_icon from "./user_icon.png";
+import chat_user_icon from "./chat_user_icon.svg"
+import user_icon from "./user_icon.svg";
 import theme_icon from "./theme_icon.svg";
 import send_icon from "./send_icon.svg";
 import stop_icon from "./stop_icon.svg";
@@ -31,6 +32,7 @@ export const assets = {
     logo,
     logo_full,
     search_icon,
+    chat_user_icon,
     user_icon,
     theme_icon,
     send_icon,
@@ -48,7 +50,7 @@ export const assets = {
 export const dummyUserData = {
     "_id": "689c6deed410acddc0d95a0e",
     "name": "Vinoth Kumar",
-    "email": "admin@example.com",
+    "email": "vinoth@example.com",
     "password": "$2b$10$VESVdPDjL5LF.KCU6jKyqeXNSLASAAfpR2kkIJExtMO.PJvZJAudy",
     "credits": 200,
 }
