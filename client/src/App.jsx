@@ -3,11 +3,14 @@ import SideBar from './components/SideBar'
 import AllRoutes from "./routes/AllRoutes"
 import { assets } from './assets/assets'
 import './assets/prism.css'
+import { useAppContext } from './context/AppContext'
+import Login from './pages/Login'
 
 const App = () => {
   
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   
+  const {user} = useAppContext()
 
   return (
     <>
@@ -18,12 +21,19 @@ const App = () => {
           onClick={() => setIsMenuOpen(true)}
         />
       )}
-      <div className="dark:bg-gradient-to-b from-[#242124] to-[#000000] dark:text-white">
-        <div className="flex h-screen w-screen">
-          <SideBar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-          <AllRoutes />
+      {user ? (
+        <div className="dark:bg-gradient-to-b from-[#242124] to-[#000000] dark:text-white">
+          <div className="flex h-screen w-screen">
+            <SideBar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+            <AllRoutes />
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className='bg-gradient-to-b- from-[#242124] to-[#000000] flex items-center justify-center h-screen w-screen'>
+          <Login/>
+        </div>
+      )}
+      
     </>
   );
 }

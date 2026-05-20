@@ -7,6 +7,7 @@ import Loading from "../pages/Loading";
 const AllRoutes = () => {
 
   const {pathname} = useLocation()
+  
 
   if(pathname === '/loading') return <Loading/>
 

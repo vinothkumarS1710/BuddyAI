@@ -40,12 +40,20 @@ const ChatBox = () => {
       <div ref={containerRef} className="flex-1 mb-5 overflow-y-scroll">
         {messages.length === 0 && (
           <div className="h-full flex flex-col items-center justify-center text-primary">
-            <img
-              src={theme === "dark" ? assets.logo_full : assets.logo_full_dark}
-              alt=""
-              className="w-full max-w-56"
-            />
-            <p className="mt-5 text-4xl text-center text-gray-400 dark:text-white">
+            <div className='flex gap-5 dark:text-white text-2xl'>
+                    <div className="p-[2px] rounded-full bg-gradient-to-r from-sky-400 via-blue-500/50 to-white animate-pulse    ">
+                      <img
+                        src={theme === "dark" ? assets.logo_dark : assets.logo}
+                        alt=""
+                        className="w-14 h-14 rounded-full object-cover"
+                      />
+                    </div>
+                    <div>
+                    <h1 className='text-black dark:text-white'>BuddyAI</h1>
+                    <p className='text-xs py-1 font-bold bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent'>Intelligent AI Assistent</p>
+                    </div>
+                  </div>
+            <p className="mt-5 text-3xl text-center text-gray-400 dark:text-white">
               Ask me anything...
             </p>
           </div>
@@ -83,7 +91,7 @@ const ChatBox = () => {
           </div>
         )}
         
-        <form onSubmit={onSubmit} className='bg-blue-200 dark:bg-[#583C79]/30 border border-primary dark:border-[#80609F]/30 rounded-full w-full p-3 pl-4 max-auto flex gap-4 items-center '>
+        <form onSubmit={onSubmit} className='bg-sky-200/30 dark:bg-[#583C79]/30 border border-primary dark:border-[#80609F]/30 rounded-full w-full p-3 pl-4 max-auto flex gap-4 items-center '>
           <select className='text-sm pl-3 pr-2 outline-none' onChange={(e) => setMode(e.target.value)} value={mode}>
             <option value="text" className='dark:bg-blue-400'>Text</option>
             <option value="image" className='dark:bg-blue-400'>Image</option>

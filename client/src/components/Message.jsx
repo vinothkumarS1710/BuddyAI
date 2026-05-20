@@ -3,8 +3,11 @@ import { assets } from '../assets/assets'
 import moment from 'moment'
 import Markdown from 'react-markdown'
 import Prism from 'prismjs'
+import { useAppContext } from '../context/AppContext'
 
 const Message = ({ message }) => {
+
+  const { theme } = useAppContext()
 
   useEffect(() => {
     Prism.highlightAll()
@@ -29,11 +32,11 @@ const Message = ({ message }) => {
       ) : (
         <div className="flex items-start gap-2 my-4 w-full">
           <img
-            src={assets.logo}
+            src={theme === 'dark' ? assets.logo_dark : assets.logo}
             alt="user"
-            className="w-7 rounded-full mt-5"
+            className="w-7 rounded-full mt-5 border-2 border-sky-400"
           />
-          <div className="inline-flex flex-col gap-2 p-2 px-4 max-w-2xl bg-primary/20 dark:bg-[#57317C]/30 border border-[#80609F]/30 rounded-md my-4">
+          <div className="inline-flex flex-col gap-2 p-2 px-4 max-w-2xl bg-sky-300/30 dark:bg-[#2c67f2]/30 border border-[#80609F]/30 rounded-md my-4">
             {message.isImage ? (
               <img
                 src={message.content}

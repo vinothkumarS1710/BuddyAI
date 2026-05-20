@@ -11,11 +11,19 @@ const SideBar = ({ isMenuOpen, setIsMenuOpen }) => {
     <div
       className={`flex flex-col h-screen min-w-72 p-5 dark:bg-gradient-to-b from-[#242124]/30 to-[#000000]/30 border border-t-0 border-[#62cff4]/30 backdrop-blur-3xl transition-all duration-500 max-md:absolute left-0 z-1 ${!isMenuOpen && "max-md:-translate-x-full"}`}
     >
-      <img
-        src={theme === "dark" ? assets.logo_full : assets.logo_full_dark}
-        alt=""
-        className="w-full max-w-48"
-      />
+      <div className='flex gap-4 dark:text-white text-2xl'>
+        <div className='p-[2px] rounded-full bg-gradient-to-r from-sky-400 via-blue-500/50 to-white animate-pulse'>
+        <img
+          src={theme === "dark" ? assets.logo_dark : assets.logo}
+          alt=""
+          className="w-14 h-14 rounded-full object-cover"
+        />
+        </div>
+        <div>
+        <h1>BuddyAI</h1>
+        <p className='text-xs py-1 font-bold bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent'>Intelligent AI Assistent</p>
+        </div>
+      </div>
 
       <button className="flex justify-center items-center w-full py-2 mt-10 text-white bg-gradient-to-r from-[#62cff4] to-[#2c67f2] text-sm rounded-md cursor-pointer">
         <span className="mr-2 text-xl">+</span>New Chat
@@ -118,7 +126,7 @@ const SideBar = ({ isMenuOpen, setIsMenuOpen }) => {
 
       <div className="flex items-center gap-2 p-3 mt-4 border border-gray-300 dark:border-white/15 rounded-md cursor-pointer group">
         <img src={assets.user_icon} className="w-5 rounded-full dark:invert" />
-        <p className="flex-1 text-sm dark:text-primary truncate">
+        <p className="flex-1 text-sm dark:text-sky-400 truncate">
           {user ? user.name : "Login your account"}
         </p>
         {user && (
