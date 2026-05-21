@@ -12,7 +12,7 @@ const SideBar = ({ isMenuOpen, setIsMenuOpen }) => {
       className={`flex flex-col h-screen min-w-72 p-5 dark:bg-gradient-to-b from-[#242124]/30 to-[#000000]/30 border border-t-0 border-[#62cff4]/30 backdrop-blur-3xl transition-all duration-500 max-md:absolute left-0 z-1 ${!isMenuOpen && "max-md:-translate-x-full"}`}
     >
       <div className='flex gap-4 dark:text-white text-2xl'>
-        <div className='p-[2px] rounded-full bg-gradient-to-r from-sky-400 via-blue-500/50 to-white animate-pulse'>
+        <div className='p-[1px] rounded-full bg-gradient-to-r from-sky-400 via-blue-500/50 to-white animate-pulse'>
         <img
           src={theme === "dark" ? assets.logo_dark : assets.logo}
           alt=""
