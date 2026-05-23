@@ -1,4 +1,5 @@
 import Chat from "../models/Chat.js"
+import User from "../models/User.js"
 
 
 // Text based AI chat message
@@ -14,7 +15,28 @@ export const textMessageController = async (req, res) => {
             timestamp : Date.now(),
             isImage : false
         })
-    } catch (err) {
 
+        const { choices } = await openai.chat.completions.create({
+            model: "gemini-3.5-flash",
+            messages: [
+                {
+                    role: "user",
+                    content: prompt,
+                },
+            ],
+        });
+
+        const reply = {...choices[0].message, timestamp : Date.now(), isImage : false}
+        res.json({success: true, reply})
+        
+        chat.messages.push(reply)
+        await chat.save()
+
+        await User.updateOne({_id: userId}, {$inc: {credits: -1}})
+
+
+    } catch (err) {
+        res.json({success: false, message: err.message})
     }
 }
+
