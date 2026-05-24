@@ -26,7 +26,7 @@ const Credits = () => {
           <div key={plan._id} className={`border border-sky-500 dark:border-sky-700 rounded-lg shadow hover:shadow-lg transition-shadow p-6 min-w-[200px] flex flex-col ${plan._id === 'pro' ? 'bg-indigo-300/50' : ''}`}>
             <div className='flex-1'>
               <h3 className='text-xl font-semibold text-gray-900 dark:text-white mb-2'>{plan.name}</h3>
-              <p className='text-2xl font-bold text-sky-600 mb-4 '>${plan.price}<span className="text-base font-normal text-gray-600 dark:text-white">{' '}/ {plan.credits} credits</span></p>
+              <p className='text-2xl font-bold text-sky-600 mb-4 '>₹ {plan.price}<span className="text-base font-normal text-gray-600 dark:text-white">{' '}/ {plan.credits} credits</span></p>
               <ul className='list-disc list-inside text-sm text-gray-700 dark:text-white space-y-1'>
                 {plan.features.map((feature, index) => (
                   <li key={index}>{feature}</li>
