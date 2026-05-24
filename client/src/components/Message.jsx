@@ -34,7 +34,7 @@ const Message = ({ message }) => {
           <img
             src={theme === 'dark' ? assets.logo_dark : assets.logo}
             alt="user"
-            className="w-7 rounded-full mt-5 border-2 border-sky-400"
+            className="w-7 rounded-full mt-5 border-1 border-sky-400"
           />
           <div className="inline-flex flex-col gap-2 p-2 px-4 max-w-2xl bg-sky-300/30 dark:bg-[#2c67f2]/30 border border-[#80609F]/30 rounded-md my-4">
             {message.isImage ? (

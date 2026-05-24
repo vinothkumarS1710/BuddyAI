@@ -41,7 +41,7 @@ const ChatBox = () => {
         {messages.length === 0 && (
           <div className="h-full flex flex-col items-center justify-center text-primary">
             <div className='flex gap-5 dark:text-white text-2xl'>
-                    <div className="p-[1px] rounded-full bg-gradient-to-r from-sky-400 via-blue-500/50 to-white animate-pulse    ">
+                    <div className="p-[1px] rounded-full bg-gradient-to-r from-sky-400 via-blue-500/50 to-white dark:to-black animate-pulse    ">
                       <img
                         src={theme === "dark" ? assets.logo_dark : assets.logo}
                         alt=""
