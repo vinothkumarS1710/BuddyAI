@@ -2,14 +2,76 @@ import { useState, useEffect } from "react"
 import { dummyPlans } from '../assets/assets'
 import Loading from "./Loading"
 
+
 const Credits = () => {
 
     const [plans, setPlans] = useState([])
     const [loading, setLoading] = useState(true)
+    
 
     const fetchPlans = async () => {
       setPlans(dummyPlans)
       setLoading(false)
+    }
+
+    const loadScript = (src) => {
+      return new Promise((resolve, reject) => {
+        const script = document.createElement("script");
+        script.src = src;
+        script.onload = () => {
+          resolve(true);
+        };
+        script.onerror = () => {
+          reject(new Error("Something is not right"));
+        };
+        document.body.appendChild(script);
+      });
+    };
+
+    const handlePayment = async (e) => {
+      e.preventDefault();
+      
+      
+      try{
+        const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js")
+
+        if (!res) {
+        alert("Razorpay SDK failed to load")
+        return;
+        } 
+
+        const {order} = await axios.get("http://localhost:3000/api/credit/purchase")
+
+        if (!order || !order.id) {
+          alert("Order is not created")
+          return;
+        }
+
+        const options = {
+          key : process.env.VITE_RAZORPAY_TEST_API_KEY,
+          amount: order.amount/100,
+          currency: order.currency,
+          name: order.notes.name,
+          description: "Test Transaction",
+          order_id: order.id,
+          handler: async function(res){
+            alert("Payment Successfull")
+            window.location.reload()
+          },
+          notes: {
+            receipt: order.receipt
+          }
+        }
+
+        const rzp = new window.Razorpay(options)
+        rzp.open()
+        rzp.on("payment.failed", function(res){
+          alert("Payment Failed")
+        })
+
+      } catch (err) {
+        console.error(err)
+      }
     }
 
     useEffect(() => {
@@ -33,7 +95,7 @@ const Credits = () => {
                 ))}
               </ul>
             </div>
-            <button className='mt-6 bg-sky-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium py-2 rounded-xl transition-colors cursor-pointer'>Buy Now</button>
+            <button onClick={(e) => {handlePayment(e)}} className='mt-6 bg-sky-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium py-2 rounded-xl transition-colors cursor-pointer'>Buy Now</button>
           </div>
         ))}
       </div>

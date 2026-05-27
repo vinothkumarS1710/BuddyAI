@@ -6,6 +6,7 @@ import userRouter from './routes/userRoutes.js'
 import chatRouter from './routes/chatRoutes.js'
 import messageRouter from './routes/messageRoutes.js'
 import creditRouter from './routes/creditRoutes.js'
+import { razorpayWebhooks } from './controllers/webhooks.js';
 
 
 const app = express()
@@ -21,6 +22,7 @@ app.use('/api/user', userRouter)
 app.use('/api/chat', chatRouter)
 app.use('/api/message', messageRouter)
 app.use('/api/credit', creditRouter)
+app.post('/api/razorpay', express.json(), razorpayWebhooks)
 
 
 
