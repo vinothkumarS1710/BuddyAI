@@ -1,22 +1,22 @@
 # 🤖 BuddyAI
 
-An AI-powered chat application built with the MERN stack that enables users to interact with multiple AI models, generate images, and manage usage through a credit-based payment system powered by Razorpay.
+An AI-powered chat application built with the MERN stack that enables users to interact with multiple AI models, generate AI images, and manage usage through a credit-based payment system powered by Razorpay.
 
 ---
 
 ## 🚀 Live Demo
 
-```text
-https://buddyai-flame.vercel.app
-```
+🔗 https://buddyai-flame.vercel.app
 
 ---
 
 ## 📖 About The Project
 
-BuddyAI is a full-stack AI application designed to provide users with a seamless conversational AI experience. Users can chat with AI, generate images from text prompts, manage chat history, and purchase credits securely through Razorpay.
+BuddyAI is a full-stack AI platform that combines conversational AI, image generation, secure authentication, and online payments into a single modern application.
 
-The application integrates modern AI APIs and follows a scalable architecture with secure authentication, payment processing, and cloud-based image management.
+Users can create accounts, chat with multiple AI models, generate AI-powered images, manage conversations, purchase credits through Razorpay, and securely access their chat history.
+
+The project follows a scalable MERN architecture and integrates industry-standard services such as OpenAI, Groq, ImageKit, and Razorpay.
 
 ---
 
@@ -24,23 +24,27 @@ The application integrates modern AI APIs and follows a scalable architecture wi
 
 ### 🔐 Authentication & Authorization
 
-* User Registration & Login
-* JWT-based Authentication
+* User Registration
+* User Login
+* JWT Authentication
 * Protected Routes
 * Secure API Access
+* Password Hashing
 
 ### 💬 AI Chat
 
-* Real-time AI Conversations
+* Real-Time AI Conversations
 * Multiple AI Model Support
-* Persistent Chat History
-* Create and Delete Chats
 * Context-Aware Responses
+* Persistent Chat History
+* Create New Chats
+* Delete Existing Chats
 
 ### 🎨 AI Image Generation
 
 * Generate Images from Text Prompts
-* Image Storage and Retrieval
+* AI-Powered Image Creation
+* Image Storage & Retrieval
 * ImageKit Cloud Integration
 
 ### 💳 Credit System
@@ -48,21 +52,34 @@ The application integrates modern AI APIs and follows a scalable architecture wi
 * Credit-Based Usage Tracking
 * Automatic Credit Deduction
 * Credit Balance Management
-* Purchase Additional Credits Anytime
+* Purchase Additional Credits
+* Real-Time Credit Updates
 
-### 💰 Razorpay Payment Integration
+### 💰 Razorpay Payment Gateway
 
 * Secure Online Payments
 * Credit Purchase Workflow
 * Backend Payment Verification
-* Transaction Handling
+* Transaction Management
+* Payment Status Handling
 
-### 🌙 Modern User Interface
+### 🌙 Modern User Experience
 
 * Responsive Design
-* Dark & Light Theme Support
+* Mobile-Friendly Interface
 * Smooth User Experience
-* Mobile-Friendly Layout
+* Toast Notifications
+* Markdown Rendering
+* Syntax Highlighting for Code Responses
+
+### 🛡️ Security Features
+
+* JWT Authentication
+* Password Encryption
+* API Rate Limiting
+* Protected Backend Routes
+* Secure Environment Variables
+* Payment Verification
 
 ---
 
@@ -71,11 +88,15 @@ The application integrates modern AI APIs and follows a scalable architecture wi
 ### Frontend
 
 * React.js
+* Vite
 * Tailwind CSS
 * React Router DOM
 * Axios
-* React Hot Toast
+* React Markdown
+* Remark GFM
+* PrismJS
 * Moment.js
+* React Hot Toast
 
 ### Backend
 
@@ -83,11 +104,13 @@ The application integrates modern AI APIs and follows a scalable architecture wi
 * Express.js
 * MongoDB
 * Mongoose
-* JWT
+* JWT Authentication
+* bcryptjs
+* Express Rate Limit
 
 ### AI Services
 
-* Gemini API
+* OpenAI API
 * Groq API
 
 ### Payment Gateway
@@ -97,6 +120,62 @@ The application integrates modern AI APIs and follows a scalable architecture wi
 ### Cloud Services
 
 * ImageKit
+
+---
+
+## 📦 Dependencies
+
+### Frontend Dependencies
+
+| Package                 | Purpose                          |
+| ----------------------- | -------------------------------- |
+| React                   | UI Development                   |
+| React DOM               | DOM Rendering                    |
+| React Router DOM        | Client-side Routing              |
+| Axios                   | API Requests                     |
+| React Hot Toast         | Notifications                    |
+| React Markdown          | Markdown Rendering               |
+| Remark GFM              | GitHub-Flavored Markdown Support |
+| PrismJS                 | Syntax Highlighting              |
+| Moment.js               | Date Formatting                  |
+| Tailwind CSS            | Styling                          |
+| @tailwindcss/typography | Typography Styling               |
+| @tailwindcss/vite       | Tailwind Integration             |
+
+### Backend Dependencies
+
+| Package            | Purpose                       |
+| ------------------ | ----------------------------- |
+| Express            | Backend Framework             |
+| Mongoose           | MongoDB ODM                   |
+| Axios              | HTTP Requests                 |
+| bcryptjs           | Password Hashing              |
+| jsonwebtoken       | Authentication                |
+| cors               | Cross-Origin Resource Sharing |
+| dotenv             | Environment Variables         |
+| express-rate-limit | Rate Limiting                 |
+| Razorpay           | Payment Gateway               |
+| OpenAI SDK         | AI Integration                |
+| Groq SDK           | AI Integration                |
+| ImageKit           | Cloud Image Storage           |
+| short-uuid         | Unique ID Generation          |
+| crypto             | Cryptographic Utilities       |
+
+### Development Dependencies
+
+#### Frontend
+
+* Vite
+* ESLint
+* @vitejs/plugin-react
+* eslint-plugin-react-hooks
+* eslint-plugin-react-refresh
+* @types/react
+* @types/react-dom
+
+#### Backend
+
+* Nodemon
 
 ---
 
@@ -110,9 +189,10 @@ BuddyAI
 │   ├── src
 │   │   ├── assets
 │   │   ├── components
-│   │   ├── pages
 │   │   ├── context
-│   │   └── App.jsx
+│   │   ├── pages
+│   │   ├── App.jsx
+│   │   └── main.jsx
 │   │
 │   └── package.json
 │
@@ -138,21 +218,21 @@ BuddyAI
 
 ## 📸 Screenshots
 
-### 🔐 Authentication
+### 🔐 Login Page
 
-![Login Page](./screenshots/login.png)
+![Login](./screenshots/login.png)
 
 ### 💬 AI Chat Interface
 
-![Chat Interface](./screenshots/chat.png)
+![Chat](./screenshots/chat.png)
 
 ### 💳 Credit Plans
 
-![Credit Plans](./screenshots/plans.png)
+![Plans](./screenshots/plans.png)
 
-### 💰 Razorpay Payment
+### 💰 Razorpay Payment Gateway
 
-![Payment Gateway](./screenshots/payment.png)
+![Payment](./screenshots/payment.png)
 
 ---
 
@@ -161,13 +241,13 @@ BuddyAI
 ### Backend (.env)
 
 ```env
-PORT=5000
+PORT=3000
 
 MONGODB_URI=your_mongodb_connection_string
 
 JWT_SECRET=your_jwt_secret
 
-GEMINI_API_KEY=your_openai_api_key
+OPENAI_API_KEY=your_openai_api_key
 
 GROQ_API_KEY=your_groq_api_key
 
@@ -177,7 +257,7 @@ IMAGEKIT_URL_ENDPOINT=your_imagekit_url_endpoint
 
 RAZORPAY_TEST_API_KEY=your_razorpay_key_id
 RAZORPAY_TEST_SECRET_KEY=your_razorpay_key_secret
-RAZORPAY_WEBHOOK_SECRET=your_razorpay_webhook_secret
+RAZORPAY_WEBHOOK_SECRET=your_webhook_secret
 ```
 
 ### Frontend (.env)
@@ -218,7 +298,7 @@ npm install
 
 ---
 
-## ▶️ Running the Application
+## ▶️ Running The Application
 
 ### Start Backend Server
 
@@ -236,7 +316,9 @@ cd client
 npm run dev
 ```
 
-Application URLs:
+---
+
+## 🌐 Local URLs
 
 ```text
 Frontend: http://localhost:5173
@@ -254,19 +336,7 @@ Backend: http://localhost:3000
 | Standard | 500 Credits  | ₹99   |
 | Premium  | 1000 Credits | ₹199  |
 
-> Update the pricing according to your latest plans.
-
----
-
-## 🔒 Security Features
-
-* JWT Authentication
-* Password Hashing
-* Protected Routes
-* Payment Verification
-* Secure Environment Variables
-* API Error Handling
-* Rate Limiting
+> Update the table if your pricing changes.
 
 ---
 
@@ -275,22 +345,26 @@ Backend: http://localhost:3000
 * Full-Stack MERN Application
 * AI Chat Integration
 * AI Image Generation
+* OpenAI & Groq Integration
 * Razorpay Payment Gateway
 * Credit-Based Monetization System
-* Responsive UI Design
-* Secure Authentication Workflow
+* ImageKit Cloud Storage
+* Secure JWT Authentication
+* Rate Limiting Protection
+* Responsive User Interface
 
 ---
 
 ## 🎯 Future Enhancements
 
 * Voice-Based AI Assistant
-* File Upload & Analysis
-* AI PDF Summarization
+* AI File Analysis
+* PDF Summarization
 * AI Code Generation
-* Subscription-Based Plans
 * Chat Sharing
-* Team Collaboration Features
+* Team Collaboration
+* Subscription Plans
+* Multi-Language Support
 
 ---
 
@@ -302,8 +376,8 @@ Full Stack Developer | MERN Stack Enthusiast | AI Application Developer
 
 #### Connect With Me
 
-* LinkedIn: https://www.linkedin.com/in/vinoth-fullstack
 * GitHub: https://github.com/vinothkumarS1710
+* LinkedIn: https://www.linkedin.com/in/vinoth-fullstack
 
 ---
 
@@ -317,9 +391,9 @@ Feel free to fork the repository and submit a pull request.
 
 ## ⭐ Support
 
-If you found this project helpful, consider giving it a ⭐ on GitHub.
+If you found this project useful, consider giving it a ⭐ on GitHub.
 
-It helps others discover the project and motivates further development.
+Your support helps the project grow and motivates future improvements.
 
 ---
 

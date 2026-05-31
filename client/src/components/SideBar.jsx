@@ -93,7 +93,7 @@ const SideBar = ({ isMenuOpen, setIsMenuOpen }) => {
               </div>
               <img
                 src={assets.bin_icon}
-                className="hidden group-hover:block w-4 cursor-pointer not-dark:invert"
+                className="md:hidden group-hover:block w-4 cursor-pointer not-dark:invert"
                 onClick={e => toast.promise(deleteChat(e, chat._id), {loading: 'deleting...'})}
               />
             </div>
