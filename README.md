@@ -158,7 +158,6 @@ The project follows a scalable MERN architecture and integrates industry-standar
 | OpenAI SDK         | AI Integration                |
 | Groq SDK           | AI Integration                |
 | ImageKit           | Cloud Image Storage           |
-| short-uuid         | Unique ID Generation          |
 | crypto             | Cryptographic Utilities       |
 
 ### Development Dependencies
@@ -333,7 +332,7 @@ Backend: http://localhost:3000
 | Plan     | Credits      | Price |
 | -------- | ------------ | ----- |
 | Basic    | 100 Credits  | ₹29   |
-| Standard | 500 Credits  | ₹99   |
+| Pro      | 500 Credits  | ₹99   |
 | Premium  | 1000 Credits | ₹199  |
 
 > Update the table if your pricing changes.
