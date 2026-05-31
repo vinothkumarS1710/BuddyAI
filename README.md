@@ -6,8 +6,6 @@ An AI-powered chat application built with the MERN stack that enables users to i
 
 ## 🚀 Live Demo
 
-🔗 Add your deployed application link here
-
 ```text
 https://buddyai-flame.vercel.app
 ```
