@@ -53,7 +53,7 @@ const Credits = () => {
         const {data} = await axios.post("/api/credit/purchase",{planId}, {headers: {Authorization: token}})
 
         if (!data.success || !data.order) {
-          toast.success("Order is not created")
+          toast.error("Order is not created")
           return;
         }
 
