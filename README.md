@@ -140,10 +140,6 @@ BuddyAI
 
 ## 📸 Screenshots
 
-### 🏠 Home Page
-
-![Home Page](./screenshots/home.png)
-
 ### 🔐 Authentication
 
 ![Login Page](./screenshots/login.png)
