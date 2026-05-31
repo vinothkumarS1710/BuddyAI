@@ -3,6 +3,8 @@ import Chat from "../models/Chat.js"
 import User from "../models/User.js"
 import imagekit from "../configs/imageKit.js"
 import openai from "../configs/openai.js"
+import groq from "../configs/groq.js"
+import rateLimit from 'express-rate-limit'
 
 
 
@@ -16,35 +18,61 @@ export const textMessageController = async (req, res) => {
         }
 
         const { chatId, prompt } = req.body
+        const chat = await Chat.findOne({ userId, _id: chatId })
 
-        const chat = await Chat.findOne({userId, _id: chatId})
+        if (!chat) {
+            return res.status(404).json({success: false, message: "Chat not found"})
+        }
+  
         chat.messages.push({
-            role : "user", 
-            content : prompt, 
-            timestamp : Date.now(),
-            isImage : false
+            role: "user",
+            content: prompt,
+            timestamp: Date.now(),
+            isImage: false
         })
 
-        const { choices } = await openai.chat.completions.create({
-            model: "gemini-3.5-flash",
-            messages: [
-                {
-                    role: "user",
-                    content: prompt,
-                },
-            ],
-        });
+        const messages = chat.messages.filter(msg => !msg.isImage).map(msg => ({role: msg.role, content: msg.content}))
 
-        const reply = {...choices[0].message, timestamp : Date.now(), isImage : false}
-        res.json({success: true, reply})
-        
+        let completion
+        let provider = "Gemini"
+
+        try{
+            completion = await openai.chat.completions.create({
+                model: "gemini-2.0-flash",
+                messages,
+            })
+
+        }catch(err) {
+
+            if (err?.status === 429 || err?.status === 503 || err?.code === 429) {
+
+                provider = "Groq"
+                completion = await groq.chat.completions.create({
+                    model: "llama-3.3-70b-versatile",
+                    messages,
+                })
+
+            }else{
+                throw err
+            }
+        }
+
+        const reply = {
+            role: "assistant",
+            content: completion.choices[0].message.content,
+            timestamp: Date.now(),
+            isImage: false,
+            provider,
+        }
+
         chat.messages.push(reply)
         await chat.save()
         await User.updateOne({_id: userId}, {$inc: {credits: -1}})
 
+        return res.json({success: true, reply})
 
     } catch (err) {
-        res.json({success: false, message: err.message})
+        return res.status(err.status || 500).json({success: false, message: err.message || "Something went wrong"})
     }
 }
 
@@ -60,6 +88,9 @@ export const imageMessageController = async (req, res) => {
         const {prompt, chatId, isPublished} = req.body
 
         const chat = await Chat.findOne({userId, _id: chatId})
+        if (!chat) {
+            return res.status(404).json({ success: false, message: "Chat not found" })
+        }
         chat.messages.push({
             role : "user", 
             content : prompt, 
@@ -67,32 +98,12 @@ export const imageMessageController = async (req, res) => {
             isImage : false
         });
 
-        // Encode the prompt
         const encodedPrompt = encodeURIComponent(prompt)
-
-        // Construct ImageKit AI generation URL
         const generatedImageUrl = `${process.env.IMAGEKIT_URL_ENDPOINT}/ik-genimg-prompt-${encodedPrompt}/buddyai/${Date.now()}.png?tr=w-800,h-800`;
-
-        // Trigger generation by fetching from ImageKit
         const aiImageResponse =  await axios.get(generatedImageUrl, {responseType: "arraybuffer"})
-
-        // Convert to Base64
         const base64image = `data:image/png;base64,${Buffer.from(aiImageResponse.data,"binary").toString('base64')}`;
-
-        // Upload to ImageKit Media Library
-        const uploadResponse = await imagekit.files.upload({
-            file : base64image,
-            fileName : `${Date.now()}.png`,
-            folder : "BuddyAI"
-        })
-
-        const reply = {
-            role : 'assistant',
-            content : uploadResponse.url,
-            timestamp : Date.now(),
-            isImage : true,
-            isPublished
-        }
+        const uploadResponse = await imagekit.files.upload({file : base64image, fileName : `${Date.now()}.png`, folder : "BuddyAI"})
+        const reply = {role : 'assistant', content : uploadResponse.url, timestamp : Date.now(), isImage : true, isPublished}
         
         res.json({success: true, reply})
 
@@ -106,3 +117,21 @@ export const imageMessageController = async (req, res) => {
         res.json({success: false, message: err.message})
     }
 }
+
+
+// Text Limiter
+export const textLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 15,
+  message: {success: false, message: "Too many requests. Please wait."},
+  standardHeaders: true,
+  legacyHeaders: false,
+})
+
+
+// Image limiter
+export const imageLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 5,
+  message: {success: false, message: "Image limit exceeded. Try again later."}
+})

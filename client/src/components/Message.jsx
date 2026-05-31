@@ -44,7 +44,7 @@ const Message = ({ message }) => {
               />
             ) : (
               <div className="text-sm dark:text-white reset-tw">
-                <Markdown>{message.content}</Markdown>
+                <Markdown components={{pre: ({children}) => (<pre className="bg-transparent p-0 rounded-none">{children}</pre>), code: ({children}) => (<code className="px-1">{children}</code>)}}>{message.content}</Markdown>
               </div>
             )}
             <span className="flex text-xs text-gray-400 dark:text-[#B1A6C0]">

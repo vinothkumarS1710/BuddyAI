@@ -5,22 +5,18 @@ import { assets } from './assets/assets'
 import './assets/prism.css'
 import { useAppContext } from './context/AppContext'
 import Login from './pages/Login'
+import {Toaster} from 'react-hot-toast'
 
 const App = () => {
   
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   
-  const {user} = useAppContext()
+  const {user, loadingUser} = useAppContext()
 
   return (
     <>
-      {!isMenuOpen && (
-        <img
-          src={assets.menu_icon}
-          className="absolute top-3 left-3 w-8 h-8 cursor-pointer md:hidden not-dark:invert"
-          onClick={() => setIsMenuOpen(true)}
-        />
-      )}
+      <Toaster />
+      {!isMenuOpen && (<img src={assets.menu_icon} className="absolute top-3 left-3 w-8 h-8 cursor-pointer md:hidden not-dark:invert" onClick={() => setIsMenuOpen(true)}/>)}
       {user ? (
         <div className="dark:bg-gradient-to-b from-[#242124] to-[#000000] dark:text-white">
           <div className="flex h-screen w-screen">
