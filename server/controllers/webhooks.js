@@ -4,6 +4,8 @@ import User from "../models/User.js"
 
 export const razorpayWebhooks = async (req, res) => {
   try {
+    console.log("WEBHOOK HIT")
+    
     const webhookSecret = process.env.RAZORPAY_WEBHOOK_SECRET
     const signature = req.headers["x-razorpay-signature"]
     const expectedSignature = crypto.createHmac("sha256", webhookSecret).update(req.body).digest("hex")

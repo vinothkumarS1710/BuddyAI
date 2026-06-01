@@ -15,6 +15,7 @@ await connectDB()
 
 
 app.use(cors())
+app.post('/api/razorpay', express.raw({ type: 'application/json' }), razorpayWebhooks)
 app.use(express.json())
 
 app.get('/', (req, res) =>res.send('Server is Live!'))
@@ -22,7 +23,6 @@ app.use('/api/user', userRouter)
 app.use('/api/chat', chatRouter)
 app.use('/api/message', messageRouter)
 app.use('/api/credit', creditRouter)
-app.post('/api/razorpay', express.json(), razorpayWebhooks)
 
 
 const PORT = process.env.PORT || 3000
