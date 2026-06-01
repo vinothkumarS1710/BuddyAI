@@ -5,16 +5,19 @@ import User from "../models/User.js"
 export const razorpayWebhooks = async (req, res) => {
   try {
     console.log("WEBHOOK HIT")
-    
+    console.log("Headers Signature:", req.headers["x-razorpay-signature"]);
     const webhookSecret = process.env.RAZORPAY_WEBHOOK_SECRET
     const signature = req.headers["x-razorpay-signature"]
     const expectedSignature = crypto.createHmac("sha256", webhookSecret).update(req.body).digest("hex")
+    console.log("Expected:", expectedSignature);
+    console.log("Received:", signature);
 
     if (signature !== expectedSignature) {
       return res.status(400).json({success: false, message: "Invalid signature"})
     }
 
     const body = JSON.parse(req.body.toString())
+    console.log("Body Type:", typeof req.body);
 
     switch (body.event) {
       case "payment.captured": {
