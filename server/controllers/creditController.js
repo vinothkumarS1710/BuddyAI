@@ -61,6 +61,8 @@ export const purchasePlan = async (req, res) => {
             }
         }
         const order = await razorpay.orders.create(options)
+        transaction.razorpayOrderId = order.id
+        await transaction.save()
         res.json({success: true, order})
     } catch (err) {
         res.json({success: false,message: err.message})

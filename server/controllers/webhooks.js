@@ -5,45 +5,52 @@ import User from "../models/User.js"
 export const razorpayWebhooks = async (req, res) => {
   try {
     const webhookSecret = process.env.RAZORPAY_WEBHOOK_SECRET
-    const razorpaySignature = req.headers["x-razorpay-signature"];
-    const generatedSignature = crypto.createHmac("sha256", webhookSecret).update(JSON.stringify(req.body)).digest("hex")
+    const signature = req.headers["x-razorpay-signature"]
+    const expectedSignature = crypto.createHmac("sha256", webhookSecret).update(req.body).digest("hex")
 
-    if (generatedSignature !== razorpaySignature) {
-      return res.status(400).json({success: false, message: "Invalid webhook signature"})
+    if (signature !== expectedSignature) {
+      return res.status(400).json({success: false, message: "Invalid signature"})
     }
 
-    const event = req.body.event
+    const body = JSON.parse(req.body.toString())
 
-    switch (event) {
+    switch (body.event) {
       case "payment.captured": {
-        const payment = req.body.payload.payment.entity
-        const orderId = payment.order_id
-        const paymentId = payment.id
-
-        const transaction = await Transaction.findOne({razorpayOrderId: orderId})
+        const payment = body.payload.payment.entity
+        const transaction = await Transaction.findOne({razorpayOrderId: payment.order_id})
 
         if (!transaction) {
-          return res.json({success: true, message: "Transaction not found"})
+          return res.status(404).json({success: false, message: "Transaction not found"})
         }
 
         if (transaction.isPaid) {
-          return res.json({success: true, message: "Payment already processed"})
+          return res.status(200).json({success: true, message: "Already processed"})
         }
 
-        await User.findByIdAndUpdate(transaction.userId, {$inc: {credits: transaction.credits}}, {new: true})
-
         transaction.isPaid = true
-        transaction.paymentId = paymentId
+        transaction.paymentId = payment.id
         await transaction.save()
+        await User.findByIdAndUpdate(transaction.userId, {$inc: {credits: transaction.credits}})
+        break;
+      }
+
+      case "payment.failed": {
+        const payment = body.payload.payment.entity
+        const transaction = await Transaction.findOne({razorpayOrderId: payment.order_id})
+
+        if (transaction) {
+          transaction.isPaid = false
+          await transaction.save()
+        }
+
         break;
       }
 
       default:
-        break;
+        console.log(`Unhandled Event: ${body.event}`)
     }
 
-    return res.status(200).json({success: true, received: true})
-
+    return res.status(200).json({success: true})
   } catch (error) {
       return res.status(500).json({success: false, message: error.message})
   }
