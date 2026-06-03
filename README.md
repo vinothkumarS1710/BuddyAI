@@ -45,7 +45,6 @@ The project follows a scalable MERN architecture and integrates industry-standar
 * Generate Images from Text Prompts
 * AI-Powered Image Creation
 * Image Storage & Retrieval
-* ImageKit Cloud Integration
 
 ### 💳 Credit System
 
@@ -345,7 +344,6 @@ Backend: http://localhost:3000
 * OpenAI & Groq Integration
 * Razorpay Payment Gateway
 * Credit-Based Monetization System
-* ImageKit Cloud Storage
 * Secure JWT Authentication
 * Rate Limiting Protection
 * Responsive User Interface
