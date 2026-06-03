@@ -13,7 +13,7 @@ export const razorpayWebhooks = async (req, res) => {
     console.log("Received:", signature);
 
     if (signature !== expectedSignature) {
-      return res.status(400).json({success: false, message: "Invalid signature"})
+      return res.status(400).json({ success: false, message: "Invalid signature" })
     }
 
     const body = JSON.parse(req.body.toString())
@@ -22,26 +22,26 @@ export const razorpayWebhooks = async (req, res) => {
     switch (body.event) {
       case "payment.captured": {
         const payment = body.payload.payment.entity
-        const transaction = await Transaction.findOne({razorpayOrderId: payment.order_id})
+        const transaction = await Transaction.findOne({ razorpayOrderId: payment.order_id })
 
         if (!transaction) {
-          return res.status(404).json({success: false, message: "Transaction not found"})
+          return res.status(404).json({ success: false, message: "Transaction not found" })
         }
 
         if (transaction.isPaid) {
-          return res.status(200).json({success: true, message: "Already processed"})
+          return res.status(200).json({ success: true, message: "Already processed" })
         }
 
         transaction.isPaid = true
         transaction.paymentId = payment.id
         await transaction.save()
-        await User.findByIdAndUpdate(transaction.userId, {$inc: {credits: transaction.credits}})
+        await User.findByIdAndUpdate(transaction.userId, { $inc: { credits: transaction.credits } })
         break;
       }
 
       case "payment.failed": {
         const payment = body.payload.payment.entity
-        const transaction = await Transaction.findOne({razorpayOrderId: payment.order_id})
+        const transaction = await Transaction.findOne({ razorpayOrderId: payment.order_id })
 
         if (transaction) {
           transaction.isPaid = false
@@ -55,8 +55,8 @@ export const razorpayWebhooks = async (req, res) => {
         console.log(`Unhandled Event: ${body.event}`)
     }
 
-    return res.status(200).json({success: true})
+    return res.status(200).json({ success: true })
   } catch (error) {
-      return res.status(500).json({success: false, message: error.message})
+    return res.status(500).json({ success: false, message: error.message })
   }
 }

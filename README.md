@@ -6,7 +6,7 @@ An AI-powered chat application built with the MERN stack that enables users to i
 
 ## 🚀 Live Demo
 
-🔗 https://buddyai-flame.vercel.app
+🔗 https://trybuddyai.vercel.app
 
 ---
 
@@ -110,7 +110,7 @@ The project follows a scalable MERN architecture and integrates industry-standar
 
 ### AI Services
 
-* OpenAI API
+* Gemini API
 * Groq API
 
 ### Payment Gateway
@@ -155,9 +155,9 @@ The project follows a scalable MERN architecture and integrates industry-standar
 | dotenv             | Environment Variables         |
 | express-rate-limit | Rate Limiting                 |
 | Razorpay           | Payment Gateway               |
-| OpenAI SDK         | AI Integration                |
+| Gemini SDK         | AI Integration                |
 | Groq SDK           | AI Integration                |
-| ImageKit           | Cloud Image Storage           |
+| ImageKit           | Image Generation              |
 | crypto             | Cryptographic Utilities       |
 
 ### Development Dependencies
@@ -240,13 +240,11 @@ BuddyAI
 ### Backend (.env)
 
 ```env
-PORT=3000
-
 MONGODB_URI=your_mongodb_connection_string
 
 JWT_SECRET=your_jwt_secret
 
-OPENAI_API_KEY=your_openai_api_key
+GEMINI_API_KEY=your_openai_api_key
 
 GROQ_API_KEY=your_groq_api_key
 
