@@ -389,8 +389,8 @@ Your support helps the project grow and motivates future improvements.
 
 Copyright © 2026 Vinoth Kumar S
 
-All Rights Reserved.
+This project is proprietary software. The source code is provided for
+portfolio and evaluation purposes only.
 
-This source code is provided for viewing and evaluation purposes only.
-No permission is granted to copy, modify, distribute, or use this software
-without explicit written permission from the author.
+No permission is granted to copy, modify, distribute, sublicense,
+or use this software without explicit written permission from the author.
