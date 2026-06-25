@@ -6,7 +6,8 @@ An AI-powered chat application built with the MERN stack that enables users to i
 
 ## 🚀 Live Demo
 
-🔗 https://trybuddyai.vercel.app
+- Frontend: https://trybuddyai.vercel.app
+- Backend API: https://buddy-ai-server-eight.vercel.app
 
 ---
 
@@ -332,7 +333,7 @@ Backend: http://localhost:3000
 | Pro      | 500 Credits  | ₹99   |
 | Premium  | 1000 Credits | ₹199  |
 
-> Update the table if your pricing changes.
+
 
 ---
 
@@ -371,7 +372,7 @@ Full Stack Developer | MERN Stack Enthusiast | AI Application Developer
 
 #### Connect With Me
 
-* GitHub: https://github.com/vinothkumarS1710
+* Email:  vinothkumarbscit46@gmail.com
 * LinkedIn: https://www.linkedin.com/in/vinoth-fullstack
 
 ---
