@@ -401,4 +401,4 @@ This project is proprietary software. The source code is provided for
 portfolio and evaluation purposes only.
 
 No permission is granted to copy, modify, distribute, sublicense,
-or use this software without explicit written permission from the author.~
+or use this software without explicit written permission from the author.
