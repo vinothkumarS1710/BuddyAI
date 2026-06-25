@@ -377,14 +377,6 @@ Full Stack Developer | MERN Stack Enthusiast | AI Application Developer
 
 ---
 
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome.
-
-Feel free to fork the repository and submit a pull request.
-
----
-
 ## ⭐ Support
 
 If you found this project useful, consider giving it a ⭐ on GitHub.
@@ -397,8 +389,8 @@ Your support helps the project grow and motivates future improvements.
 
 Copyright © 2026 Vinoth Kumar S
 
-This project is proprietary software. The source code is provided for
-portfolio and evaluation purposes only.
+All Rights Reserved.
 
-No permission is granted to copy, modify, distribute, sublicense,
-or use this software without explicit written permission from the author.
+This source code is provided for viewing and evaluation purposes only.
+No permission is granted to copy, modify, distribute, or use this software
+without explicit written permission from the author.
