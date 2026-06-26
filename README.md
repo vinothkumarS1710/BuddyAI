@@ -55,9 +55,8 @@ The project follows a scalable MERN architecture and integrates industry-standar
 * Purchase Additional Credits
 * Real-Time Credit Updates
 
-### 💰 Razorpay Payment Gateway
+### 💰 Razorpay Payment Gateway (Test Mode)
 
-* Secure Online Payments
 * Credit Purchase Workflow
 * Backend Payment Verification
 * Transaction Management
@@ -115,7 +114,7 @@ The project follows a scalable MERN architecture and integrates industry-standar
 
 ### Payment Gateway
 
-* Razorpay
+* Razorpay(Test Mode)
 
 ### Cloud Services
 
@@ -343,7 +342,7 @@ Backend: http://localhost:3000
 * AI Chat Integration
 * AI Image Generation
 * OpenAI & Groq Integration
-* Razorpay Payment Gateway
+* Razorpay Payment Gateway (Test Mode)
 * Credit-Based Monetization System
 * Secure JWT Authentication
 * Rate Limiting Protection
