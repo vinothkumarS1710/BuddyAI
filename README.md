@@ -112,13 +112,13 @@ The project follows a scalable MERN architecture and integrates industry-standar
 * Gemini API
 * Groq API
 
+### AI Image Generation
+
+* ImageKit
+
 ### Payment Gateway
 
 * Razorpay(Test Mode)
-
-### Cloud Services
-
-* ImageKit
 
 ---
 
@@ -239,6 +239,8 @@ BuddyAI
 ### Backend (.env)
 
 ```env
+PORT=your_backend_port
+
 MONGODB_URI=your_mongodb_connection_string
 
 JWT_SECRET=your_jwt_secret
@@ -259,7 +261,7 @@ RAZORPAY_WEBHOOK_SECRET=your_webhook_secret
 ### Frontend (.env)
 
 ```env
-VITE_SERVER_URL=http://localhost:3000
+VITE_SERVER_URL=your_backend_url
 
 VITE_RAZORPAY_TEST_API_KEY=your_razorpay_key_id
 ```
